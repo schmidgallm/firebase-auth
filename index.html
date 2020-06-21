@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Auth</title>
+    <!-- Font Aewsome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Compiled and minified Materialize CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <!-- Wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="amber darken-4">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a href="#" class="brand-logo">Firebase Auth</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+              ><i class="material-icons">menu</i></a
+            >
+            <ul class="right hide-on-med-and-down">
+              <li>
+                <a class="modal-trigger" data-target="modal-account" href="#"
+                  ><span class="material-icons"> account_circle </span>My
+                  Account</a
+                >
+              </li>
+              <li>
+                <a class="modal-trigger" data-target="modal-create" href="#"
+                  ><span class="material-icons"> create </span>Create Prompt</a
+                >
+              </li>
+              <li>
+                <a class="modal-trigger" data-target="modal-login" href="#"
+                  ><span class="material-icons"> login </span>Login</a
+                >
+              </li>
+              <li>
+                <a class="modal-trigger" data-target="modal-signup" href="#"
+                  ><span class="material-icons"> create </span>Sign Up</a
+                >
+              </li>
+              <li>
+                <a class="modal-trigger" data-target="modal-logout" href="#"
+                  ><span class="material-icons"> exit_to_app </span>Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+        <li>
+          <a class="modal-trigger" data-target="modal-account" href="#"
+            >My Account</a
+          >
+        </li>
+        <li>
+          <a class="modal-trigger" data-target="modal-login" href="#">Login</a>
+        </li>
+        <li>
+          <a class="modal-trigger" data-target="modal-signup" href="#"
+            >Sign Up</a
+          >
+        </li>
+        <li>
+          <a class="modal-trigger" data-target="modal-logout" href="#"
+            >Logout</a
+          >
+        </li>
+      </ul>
+
+      <!-- Sign up modal -->
+      <div id="modal-signup" class="modal">
+        <div class="modal-content">
+          <h4>Sign Up</h4>
+        </div>
+        <form id="signup-form">
+          <div class="input-field">
+            <input type="email" id="signup-email" required />
+            <label for="signup-email">Email</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="signup-password" required />
+            <label for="signup-password">Password</label>
+          </div>
+          <button class="btn amber amber lighten-1">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Login modal -->
+      <div id="modal-login" class="modal">
+        <div class="modal-content">
+          <h4>Login</h4>
+        </div>
+        <form id="login-form">
+          <div class="input-field">
+            <input type="email" id="login-email" required />
+            <label for="login-email">Email</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="login-password" required />
+            <label for="login-password">Password</label>
+          </div>
+          <button class="btn amber amber lighten-1">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Account modal -->
+      <div id="modal-account" class="modal">
+        <div class="modal-content">
+          <h4>Account Details</h4>
+        </div>
+        <div class="account-details"></div>
+      </div>
+
+      <!-- Create writing prompt modal -->
+      <div id="modal-create" class="modal">
+        <div class="modal-content">
+          <h4>Create Writing Prompt</h4>
+        </div>
+        <form id="create-form">
+          <div class="input-field">
+            <input type="text" id="title" required />
+            <label for="title">Prompt Title</label>
+          </div>
+          <div class="input-field">
+            <textarea id="content" class="materialize-textarea"></textarea>
+            <label for="content">Create Prompt</label>
+          </div>
+          <button class="btn amber amber lighten-1">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Prompt List -->
+      <div class="container prompt-container">
+        <ul class="collapsible prompts">
+          <li>
+            <div class="collapsible-header">Prompt Title</div>
+            <div class="collapsible-body">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              fuga!
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Prompt Title</div>
+            <div class="collapsible-body">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              fuga!
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Prompt Title</div>
+            <div class="collapsible-body">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              fuga!
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Prompt Title</div>
+            <div class="collapsible-body">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              fuga!
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // All keys and id's public consuming no need to hide
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAoMd6BL4iBOJ6-XNnphsv_j_RtTCk1jHo',
+        authDomain: 'fir-auth-98141.firebaseapp.com',
+        databaseURL: 'https://fir-auth-98141.firebaseio.com',
+        projectId: 'fir-auth-98141',
+        appId: '1:96599976606:web:79024af0ec1b889604698f',
+        measurementId: 'G-7QBLRJN4ES',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // Initialize Firebase analytics
+      firebase.analytics();
+      // Initalize references to auth
+      const auth = firebase.auth();
+      // Initalize references to firestore
+      const db = firebase.firestore();
+    </script>
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/static/js/materialize.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/index.js"></script>
+  </body>
+</html>

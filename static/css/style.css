@@ -1,0 +1,26 @@
+/* Navbar */
+nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul li a > span {
+  margin-right: 5px;
+}
+
+/* Modals */
+.modal {
+  padding: 20px;
+}
+
+/* Prompt Container */
+.prompt-container {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 920px) {
+  .hide-sm {
+    display: none;
+  }
+}
