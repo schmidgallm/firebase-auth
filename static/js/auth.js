@@ -1,3 +1,11 @@
+// get data
+db.collection('prompts')
+  .get()
+  .then((snapshot) => {
+    // call initPrompts from index
+    initPrompts(snapshot.docs);
+  });
+
 // Auth status changes
 auth.onAuthStateChanged((user) => {
   if (user) {
