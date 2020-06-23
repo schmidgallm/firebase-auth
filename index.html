@@ -32,54 +32,63 @@
               ><i class="material-icons">menu</i></a
             >
             <ul class="right hide-on-med-and-down">
-              <li>
+              <li class="logged-in">
                 <a class="modal-trigger" data-target="modal-account" href="#"
                   ><span class="material-icons"> account_circle </span>My
                   Account</a
                 >
               </li>
-              <li>
+              <li class="logged-in">
                 <a class="modal-trigger" data-target="modal-create" href="#"
                   ><span class="material-icons"> create </span>Create Prompt</a
                 >
               </li>
-              <li>
-                <a class="modal-trigger" data-target="modal-login" href="#"
-                  ><span class="material-icons"> login </span>Login</a
-                >
-              </li>
-              <li>
-                <a class="modal-trigger" data-target="modal-signup" href="#"
-                  ><span class="material-icons"> create </span>Sign Up</a
-                >
-              </li>
-              <li>
+              <li class="logged-in">
                 <a class="modal-trigger" id="logout" data-target="logout" href="#"
                   ><span class="material-icons"> exit_to_app </span>Logout</a
                 >
               </li>
+              <li class="logged-out">
+                <a class="modal-trigger" data-target="modal-login" href="#"
+                  ><span class="material-icons"> login </span>Login</a
+                >
+              </li>
+              <li class="logged-out">
+                <a class="modal-trigger" data-target="modal-signup" href="#"
+                  ><span class="material-icons"> create </span>Sign Up</a
+                >
+              </li>
+             
             </ul>
           </div>
         </div>
       </nav>
 
       <ul class="sidenav" id="mobile-demo">
-        <li>
+        <li class="logged-in">
           <a class="modal-trigger" data-target="modal-account" href="#"
-            >My Account</a
+            >My
+            Account</a
           >
         </li>
-        <li>
-          <a class="modal-trigger" data-target="modal-login" href="#">Login</a>
-        </li>
-        <li>
-          <a class="modal-trigger" data-target="modal-signup" href="#"
-            >Sign Up</a
+        <li class="logged-in">
+          <a class="modal-trigger" data-target="modal-create" href="#"
+            >Create Prompt</a
           >
         </li>
-        <li>
+        <li class="logged-in">
           <a class="modal-trigger" id="logout" data-target="logout" href="#"
             >Logout</a
+          >
+        </li>
+        <li class="logged-out">
+          <a class="modal-trigger" data-target="modal-login" href="#"
+            >Login</a
+          >
+        </li>
+        <li class="logged-out">
+          <a class="modal-trigger" data-target="modal-signup" href="#"
+            >Sign Up</a
           >
         </li>
       </ul>

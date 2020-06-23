@@ -1,18 +1,50 @@
-// get data
-db.collection('prompts')
-  .get()
-  .then((snapshot) => {
-    // call initPrompts from index
-    initPrompts(snapshot.docs);
-  });
-
 // Auth status changes
 auth.onAuthStateChanged((user) => {
+  // If user logged in show data
   if (user) {
-    console.log('User logged in', user);
+    db.collection('prompts')
+      .get()
+      .then((snapshot) => {
+        // call initPrompts from index
+        initPrompts(snapshot.docs);
+      });
+
+    // show links based on auth
+    navLinksInit(user);
+    // if not logged in still call grab data function but pass empty array
   } else {
-    console.log('User not logged in');
+    // show links based on auth
+    navLinksInit();
+    initPrompts([]);
   }
+});
+
+// Create new prompt
+const createForm = document.querySelector('#create-form');
+createForm.addEventListener('submit', (e) => {
+  // prevent form from submitting
+  e.preventDefault();
+
+  // init new prmopt object
+  const prompt = {
+    title: createForm['title'].value,
+    content: createForm['content'].value,
+  };
+
+  // add to db
+  db.collection('prompts')
+    .add(prompt)
+    .then(() => {
+      // close modal and rest form
+      const modal = document.querySelector('#modal-create');
+      M.Modal.getInstance(modal).close();
+      createForm.reset();
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    });
 });
 
 // Sign up
