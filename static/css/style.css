@@ -20,6 +20,10 @@ nav ul li a > span {
   padding: 20px;
 }
 
+#modal-account {
+  text-align: center;
+}
+
 /* Prompt Container */
 .prompt-container {
   margin-top: 50px;

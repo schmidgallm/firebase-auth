@@ -1,21 +1,29 @@
 // Auth status changes
 auth.onAuthStateChanged((user) => {
-  // If user logged in show data
+  // If user logged in show data in snapshot
   if (user) {
-    db.collection('prompts')
-      .get()
-      .then((snapshot) => {
+    db.collection('prompts').onSnapshot(
+      (snapshot) => {
         // call initPrompts from index
         initPrompts(snapshot.docs);
-      });
 
-    // show links based on auth
-    navLinksInit(user);
+        // show links based on auth
+        navLinksInit(user);
+      },
+      (error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      }
+    );
+
     // if not logged in still call grab data function but pass empty array
   } else {
+    // init empty array of prompts if no use so nothings shows
+    initPrompts([]);
+
     // show links based on auth
     navLinksInit();
-    initPrompts([]);
   }
 });
 
@@ -62,6 +70,12 @@ signupForm.addEventListener('submit', (e) => {
   auth
     .createUserWithEmailAndPassword(user.email, user.password)
     .then((res) => {
+      // auto create user
+      return db.collection('users').doc(res.user.uid).set({
+        bio: signupForm['signup-bio'].value,
+      });
+    })
+    .then(() => {
       // TODO
       // send verification email
 

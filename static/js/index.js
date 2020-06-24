@@ -34,9 +34,26 @@ const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
 const navLinksInit = (user) => {
   if (user) {
+    // ouput account info
+    db.collection('users')
+      .doc(user.uid)
+      .get()
+      .then((doc) => {
+        const accountDetails = document.querySelector('.account-details');
+        const html = `<div>Logged in as ${user.email}</div>
+                      <div>${doc.data().bio}</div>`;
+        accountDetails.innerHTML = html;
+      });
+
+    // toggle nav links
     loggedInLinks.forEach((link) => (link.style.display = 'block'));
     loggedOutLinks.forEach((link) => (link.style.display = 'none'));
   } else {
+    // display account details
+    const accountDetails = document.querySelector('.account-details');
+    const html = '';
+    accountDetails.innerHTML = html;
+    // toggle nav links
     loggedInLinks.forEach((link) => (link.style.display = 'none'));
     loggedOutLinks.forEach((link) => (link.style.display = 'block'));
   }
