@@ -24,6 +24,15 @@ nav ul li a > span {
   text-align: center;
 }
 
+.admin-actions {
+  width: 40%;
+  margin: 50px auto;
+}
+
+.admin-actions button {
+  margin-top: 10px;
+}
+
 /* Prompt Container */
 .prompt-container {
   margin-top: 50px;
