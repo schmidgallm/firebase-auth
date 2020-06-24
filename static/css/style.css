@@ -1,0 +1,57 @@
+/* Navbar */
+
+nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul li a > span {
+  margin-right: 5px;
+}
+
+.logged-in,
+.logged-out,
+.admin {
+  display: none;
+}
+
+/* Modals */
+.modal {
+  padding: 20px;
+}
+
+#modal-account {
+  text-align: center;
+}
+
+.admin-actions {
+  width: 40%;
+  margin: 50px auto;
+}
+
+.admin-actions button {
+  margin-top: 10px;
+}
+
+/* Prompt Container */
+.prompt-container {
+  margin-top: 50px;
+}
+
+.alert {
+  text-align: center;
+  padding: 50px;
+  color: #ff6f00;
+  margin: 0;
+}
+
+.prompts {
+  border: none;
+}
+
+@media screen and (max-width: 920px) {
+  .hide-sm {
+    display: none;
+  }
+}
