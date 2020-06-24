@@ -29,19 +29,26 @@ const initPrompts = (data) => {
   }
 };
 
-// show navbar links based by auth state
+// Set up UI based on auth state
 const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
-const navLinksInit = (user) => {
+const adminItems = document.querySelectorAll('.admin');
+const authUI = (user) => {
   if (user) {
-    // ouput account info
+    if (user.admin) {
+      adminItems.forEach((item) => (item.style.display = 'block'));
+    }
     db.collection('users')
       .doc(user.uid)
       .get()
       .then((doc) => {
         const accountDetails = document.querySelector('.account-details');
         const html = `<div>Logged in as ${user.email}</div>
-                      <div>${doc.data().bio}</div>`;
+                      <div>${doc.data().bio}</div>
+                      <div class="orange-text">${
+                        user.admin ? 'Admin' : ''
+                      }</div>
+                      `;
         accountDetails.innerHTML = html;
       });
 
@@ -49,6 +56,7 @@ const navLinksInit = (user) => {
     loggedInLinks.forEach((link) => (link.style.display = 'block'));
     loggedOutLinks.forEach((link) => (link.style.display = 'none'));
   } else {
+    adminItems.forEach((item) => (item.style.display = 'none'));
     // display account details
     const accountDetails = document.querySelector('.account-details');
     const html = '';
