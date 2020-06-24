@@ -38,7 +38,7 @@
                   Account</a
                 >
               </li>
-              <li class="logged-in">
+              <li class="admin">
                 <a class="modal-trigger" data-target="modal-create" href="#"
                   ><span class="material-icons"> create </span>Create Prompt</a
                 >
@@ -65,7 +65,7 @@
       </nav>
 
       <!-- Admin control -->
-      <form class="container center-align admin-actions">
+      <form class="container center-align admin-actions admin">
         <input type="email" placeholder="user email" id="admin-email" required />
         <button class="btn-small yellow darken-2">Make Admin</button>
       </form>
@@ -118,6 +118,7 @@
             <label for="signup-bio">Bio</label>
           </div>
           <button class="btn amber amber lighten-1">Sign Up</button>
+          <p class="error center-align orange-text"></p>
         </form>
       </div>
 
@@ -136,6 +137,7 @@
             <label for="login-password">Password</label>
           </div>
           <button class="btn amber amber lighten-1">Login</button>
+          <p class="error center-align orange-text"></p>
         </form>
       </div>
 

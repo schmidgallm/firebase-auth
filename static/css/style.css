@@ -11,7 +11,8 @@ nav ul li a > span {
 }
 
 .logged-in,
-.logged-out {
+.logged-out,
+.admin {
   display: none;
 }
 
